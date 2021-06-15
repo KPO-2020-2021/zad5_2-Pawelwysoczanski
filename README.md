@@ -1,6 +1,6 @@
 
 ## Dron faza 2 
 
-Faza niedokończona.
+Faza dokończona.
 
 
