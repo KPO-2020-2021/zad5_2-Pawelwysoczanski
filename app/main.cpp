@@ -36,8 +36,9 @@ int main()
 
      std::cout << "a - wybierz aktywnego drona" << std::endl;
      std::cout << "p - zadaj parametry przelotu" << std::endl;
-     std::cout << "m - wyswietl menu" << std::endl;
-     std::cout << "n- modyfikacja programu " << std::endl
+     std::cout << "d - dodaj element powierzchni" << std::endl;
+     std::cout << "u - usun element powierzchni" << std::endl;
+     std::cout << "m - wyswietl menu" << std::endl
                << std::endl;
      std::cout << "k - koniec dzialania programu" << std::endl;
      std::cout << std::endl;
@@ -52,20 +53,26 @@ int main()
           switch (opcja)
           {
           case 'a':
-               std::cout << "Podaj numer drona ktorego chcesz aktywowac mozliwosci 1 lub 2" << std::endl;
-               s.Interfejs();
+               s.Interfejs('a');
                break;
           case 'p':
+               s.Interfejs('p');
+               break;
+          case 'd':
+               s.Interfejs('d');
+               break;
+          case 'u':
+               s.Interfejs('u');
                break;
           case 'm':
                std::cout << "a - wybierz aktywnego drona" << std::endl;
                std::cout << "p - zadaj parametry przelotu" << std::endl;
+               std::cout << "d - dodaj element powierzchni" << std::endl;
+               std::cout << "u - usun element powierzchni" << std::endl;
                std::cout << "m - wyswietl menu" << std::endl
                          << std::endl;
                std::cout << "k - koniec dzialania programu" << std::endl;
                std::cout << std::endl;
-               break;
-          case 'n':
                break;
           default:
                break;
