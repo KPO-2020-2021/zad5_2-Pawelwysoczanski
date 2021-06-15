@@ -1,5 +1,8 @@
 #include "Gora.hh"
 
+/*!
+*\brief Konstruktor parametryczny klasy Gora.
+*/
 Gora::Gora(Vector3D SrodekBryly, double x, double y, double z, std::string NazwaPliku)
 {
   double tab[] = {x, y, z};
@@ -51,7 +54,9 @@ Gora::Gora(Vector3D SrodekBryly, double x, double y, double z, std::string Nazwa
   this->SrodekBryly[1] = SrodekBryly[1];
   this->SrodekBryly[2] = SrodekBryly[2] + z;
 }
-
+/*!
+*\brief Tworzy kopie elementu klasy Gora.
+*/
 Gora::Gora(Gora &pr)
 {
   wymiaryBryly = pr.wymiaryBryly;

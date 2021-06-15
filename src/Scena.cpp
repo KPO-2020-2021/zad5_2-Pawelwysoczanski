@@ -61,52 +61,99 @@ void Scena::Rysuj()
 }
 /*!
 *\brief 
-* Metoda powoduje przejscie do sterowania dronem ktorego numer zostal podany metodzie Interfejs() 
+* Odpowiada za interfejs sterowania programem.
 */
-
-/*!
-*\brief 
-* Wykonuje przelot drona nr 2 po okregu.
-*/
-
-/*!
-*\brief 
-* Umozliwia wybor drona.
-*/
-bool Scena::Interfejs()
+bool Scena::Interfejs(char opcja)
 {
-  std::cout << "a - wybierz aktywnego drona" << std::endl;
-  std::cout << "p - zadaj parametry przelotu" << std::endl;
-  std::cout << "d - dodaj element powierzchni" << std::endl;
-  std::cout << "u - usun element powierzchni" << std::endl;
-  std::cout << "m - wyswietl menu" << std::endl
-            << std::endl;
-  std::cout << "k - koniec dzialania programu" << std::endl;
-  std::cout << std::endl;
-  char opcja;
-  cin >> opcja;
   switch (opcja)
   {
   case 'a':
-    std::cout << "Podaj numer drona ktorego chcesz aktywowac mozliwosci 1 lub 2" << std::endl;
-    
-    break;
+  {
+    cout << "Podaj nr drona ktorego chcesz aktywowac " << endl;
+    for (int i = 0; i < (int)TabDronow.size(); i++)
+    {
+      cout << i << " " << endl;
+    }
+    cout << ":" << endl;
+    int nr;
+    cin >> nr;
+    Drona = TabDronow.begin();
+    for (int i = 0; i < nr; i++)
+    {
+      Drona++;
+    }
+    cout << "Dron " << nr << " aktywny" << endl;
+  }
+  break;
   case 'p':
+    (*Drona)->Sterowanie();
     break;
   case 'd':
-    break;
+  {
+    cout << "Ktory element chcesz dodac podaj 1-gora, 2-plaskowyz, 3 gran, 4 dron" << endl;
+
+    int nr;
+    cin >> nr;
+    Vector3D srod;
+
+    srod[0] = rand() % 400 - 200;
+    srod[1] = rand() % 400 - 200;
+    srod[2] = 50;
+
+    if (nr != 4)
+    {
+      if (nr == 1)
+      {
+
+        ListaElemt.push_front(std::make_shared<Gora>(srod, 100, 50, 100, "../dat/Element" + std::to_string(nrElem) + ".dat"));
+      }
+      if (nr == 2)
+      {
+
+        ListaElemt.push_front(std::make_shared<Plaskowyz>(srod, 100, 50, 100, "../dat/Element" + std::to_string(nrElem) + ".dat"));
+      }
+      if (nr == 3)
+      {
+
+        ListaElemt.push_front(std::make_shared<Gran>(srod, 100, 50, 100, "../dat/Element" + std::to_string(nrElem) + ".dat"));
+      }
+      nrElem++;
+      (*ListaElemt.begin())->Zapisz();
+      Lacze.DodajNazwePliku((*ListaElemt.begin())->GetNazwaPliku().c_str());
+    }
+    else
+    {
+      double pozycja[3] = {(double)(rand() % 440 - 220), (double)(rand() % 440 - 220), 25};
+      TabDronow.push_front(std::make_shared<Dron>(nrDrona, Lacze, Vector3D(pozycja)));
+      (*TabDronow.begin())->Zapisz();
+    }
+  }
+  break;
   case 'u':
-    break;
-  case 'm':
-    std::cout << "a - wybierz aktywnego drona" << std::endl;
-    std::cout << "p - zadaj parametry przelotu" << std::endl;
-    std::cout << "d - dodaj element powierzchni" << std::endl;
-    std::cout << "u - usun element powierzchni" << std::endl;
-    std::cout << "m - wyswietl menu" << std::endl
-              << std::endl;
-    std::cout << "k - koniec dzialania programu" << std::endl;
-    std::cout << std::endl;
-    break;
+  {
+    int i = 0;
+    for (std::list<std::shared_ptr<BrylaGeometryczna>>::const_iterator a = ListaElemt.begin(); a != ListaElemt.end(); a++)
+    {
+      cout << i << ": " << (*a)->GetNazwaPliku() << endl;
+      i++;
+    }
+    cout << "Podaj numer elementu ktory chcesz usunac" << endl;
+
+    int nr;
+    cin >> nr;
+    std::list<std::shared_ptr<BrylaGeometryczna>>::const_iterator a = ListaElemt.begin();
+
+    for (int j = 0; j < nr; j++)
+    {
+
+      a++;
+    }
+
+    Lacze.UsunNazwePliku((*a)->GetNazwaPliku());
+    ListaElemt.erase(a);
+  }
+  break;
+
   default:
     break;
   }

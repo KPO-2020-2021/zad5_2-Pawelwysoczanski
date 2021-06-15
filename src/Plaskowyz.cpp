@@ -1,5 +1,7 @@
 #include "Plaskowyz.hh"
-
+    /*!
+*\brief Konstruktor parametryczny klasy Plaksowyz.
+*/
 Plaskowyz::Plaskowyz(Vector3D srodek, double x,double y, double z,std::string NazwaPliku)
 {
     double tab[]={x,y,z};
@@ -51,7 +53,9 @@ Plaskowyz::Plaskowyz(Vector3D srodek, double x,double y, double z,std::string Na
   WierzBryly.push_back(punkt);
 
 }
-
+    /*!
+*\brief Tworzy kopie elementu klasy Plaskowyz.
+*/
 Plaskowyz::Plaskowyz( Plaskowyz& pr )
 {
    wymiaryBryly=pr.wymiaryBryly;
