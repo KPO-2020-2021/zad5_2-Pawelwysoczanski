@@ -45,9 +45,18 @@ class Scena
     *\brief Zmienna pozwalajaca na przechowanie numeru obecnie uzywanego drona.
     */
     int nrDrona;
-
+    /*!
+*\brief  Lista dronow znajdujaca sie na scenie.
+*/
+    std::list<std::shared_ptr<Dron>>::const_iterator Drona;
+    /*!
+*\brief Lista elementow znajdujaca sie na scenie 
+*/
     std::list<std::shared_ptr<BrylaGeometryczna>> ListaElemt;
 
+    /*!
+*\brief  Ilosc elementow znajdujaca sie na scenie.
+*/
     int nrElem;
 
 public:
@@ -56,20 +65,13 @@ public:
     */
     Scena();
     /*!
-    *\brief Metoda umozliwiajaca przelot drona.
-    */
-
-    /*!
-    *\brief Metoda wykonujaca zadana modyfikacje przelotu drona w postaci okregu.
-    */
-    /*!
     *\brief Metoda ktora rysuje scene.
     */
     void Rysuj();
     /*!
-    *\brief Metoda ktora sluzy do wyboru aktywnego drona.
+    *\brief Metoda ktora sluzy do wybierania opcji programu.
     */
-    bool Interfejs();
+    bool Interfejs(char opcja);
     /*!
     *\brief Destruktor klasy Scena.
     */

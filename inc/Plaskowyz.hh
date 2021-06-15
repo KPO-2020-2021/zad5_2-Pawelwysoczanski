@@ -2,28 +2,39 @@
 #define PLASKOWYZ_HH
 
 #include "BrylaGeometryczna.hh"
+/*!
+*\file
+*\brief Definicja klasy Plaskowyz.
+*/
 
+/*!
+*\brief Klasa Plaskowyz.
+*Klasa definiuje pojecie Plaskowyzu.
+*Klasa dziedziczy po klasie rodzica BrylaGeometryczna.
+*/
 class Plaskowyz : public BrylaGeometryczna
 {
 
 public:
-
-Plaskowyz(Vector3D srodek=Vector3D(), double x=50,double y=50, double z=50,std::string nazwa="../dat/Plaskowyz.dat");
-Plaskowyz( Plaskowyz& pr );
+  /*!
+*\brief Konstruktor parametryczny klasy Plaskowyz.
+*/
+  Plaskowyz(Vector3D srodek = Vector3D(), double x = 50, double y = 50, double z = 50, std::string nazwa = "../dat/Plaskowyz.dat");
+    /*!
+*\brief Tworzy kopie elementu klasy Plaskowyz.
+*/
+  Plaskowyz(Plaskowyz &pr);
+    /*!
+*\brief Operator przypisania dal klasy PLaskowyz.
+*/
   Plaskowyz &operator=(const Plaskowyz &other)
-    {
-     wymiaryBryly=other.wymiaryBryly;
- WierzBryly=other.WierzBryly;
-  SrodekBryly=other.SrodekBryly;
-  NazwaPliku=other.NazwaPliku;
-        return *this;
-    }
+  {
+    wymiaryBryly = other.wymiaryBryly;
+    WierzBryly = other.WierzBryly;
+    SrodekBryly = other.SrodekBryly;
+    NazwaPliku = other.NazwaPliku;
+    return *this;
+  }
 };
 
-
-
-
-
-
-
-#endif 
+#endif

@@ -106,14 +106,12 @@ public:
   *\brief Metoda ktora wykonuje operacje rysowania trasy przelotu drona.   
   */
   void RysujDroge(double droga, double kat);
-  /*!
-    *\brief Metoda wykonujaca zadana modyfikacje.
-    */
-  void Modyfikacja();
-
+/*!
+*\brief  Metoda zwraca Id drona.
+*/
   int getId() { return id; }
 
-  void Usun();
+ // void Usun();
 };
 
 #endif

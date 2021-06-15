@@ -4,7 +4,7 @@
 #include "BrylaGeometryczna.hh"
 /*!
 *\file
-*\brief Definicja klasy Prostopadloscian.
+*\brief Definicja klasy Graniastoslup.
 */
 
 /*!
